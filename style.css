@@ -1,0 +1,39 @@
+/*timer and highscores btn css*/
+#highscores {
+    background-color: #3CB371;
+    font-family: 'VT323', monospace;
+    font-size: 25px;
+}
+
+#highscores:hover {
+    background-color: #98FB98;
+}
+
+#timer {
+    font-family: 'VT323', monospace;
+    font-size: 25px;
+}
+/*start page css*/
+.col-centered {
+    margin-top: 200px;
+    margin-bottom: 200px;
+    text-align: center;
+}
+
+.custom-box {
+    border-style: solid;
+}
+
+.beginQuiz {
+    font-family: 'VT323', monospace;
+}
+
+#startBtn {
+    background-color: #3CB371;
+    font-size: 30px;
+    font-family: 'VT323', monospace;
+}
+
+#startBtn:hover {
+    background-color: #98FB98;
+}

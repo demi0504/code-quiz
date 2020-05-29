@@ -5,26 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Code Quiz</title>
-    <!--Bootstrap link-->
+    <!--Style link-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
+    <link rel="stylesheet" href="style.css">
+    <!--Google fonts link-->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
     <!--Begin start page-->
-    <div>
-        <h1 id="heading">Coding Quiz Challenge</h1>
-        <button id="startBtn">Start</button>
+    <div class="container">
+        <div class="row">
+            <div class="col lg 12">
+                <button id="highscores">View Highscores</button>
+                <div id="timer">Timer: </div>
+            </div>
+        </div>
     </div>
+    <main class="container custom-box">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3 col-centered">
+                <h1 class="beginQuiz">Coding Quiz!</h1>
+                <h2 class="beginQuiz">You will have 90 seconds to complete this quiz</h2>
+                <button id="startBtn">Start</button>
+            </div>
+        </div>
+    </main>
     <!--End start page-->
-    <!--Timer element-->
-    <div id="timer"></div>
     <!--Question element-->
     <div id="question"></div>
     <!--Begin answer choice elements-->
     <div id="choices">
-        <button class="choice" id="A">A</button>
-        <button class="choice" id="B">B</button>
-        <button class="choice" id="C">C</button>
+        <div class="choice" id="a"></div>
+        <div class="choice" id="b"></div>
+        <div class="choice" id="c"></div>
     </div>
     <!--End answer choice elements-->
     <!--Begin quiz completed section-->
