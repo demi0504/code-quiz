@@ -24,22 +24,25 @@
     <main class="container custom-box">
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3 col-centered">
-                <h1 class="beginQuiz">Coding Quiz!</h1>
-                <h2 class="beginQuiz">You will have 90 seconds to complete this quiz</h2>
+                <h1 class="beginQuiz">Coding Quiz! 
+                    <br>You will have 90 seconds to complete this quiz
+                </h1>
                 <button id="startBtn">Start</button>
+                <!--Question element-->
+                <div class="question-container hide">
+                    <div id="question"></div>
+                    <div id="answer-buttons">
+                        <button>Answer a</button>
+                        <button>Answer b</button>
+                        <button>Answer c</button>
+                    </div>
+                </div>
+                <!--End answer choice elements-->
             </div>
         </div>
     </main>
     <!--End start page-->
-    <!--Question element-->
-    <div id="question"></div>
-    <!--Begin answer choice elements-->
-    <div id="choices">
-        <div class="choice" id="a"></div>
-        <div class="choice" id="b"></div>
-        <div class="choice" id="c"></div>
-    </div>
-    <!--End answer choice elements-->
+    
     <!--Begin quiz completed section-->
     <div id="scoreContainer"></div>
     <div id="initialsForm"></div>
