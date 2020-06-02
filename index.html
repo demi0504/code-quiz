@@ -38,8 +38,18 @@
                     </div>
                 </div>
                 <!--End answer choice elements-->
-                <div class="score-container hide">Final Score</div>
-                <div id="initialsForm"></div>
+                <div class="score-container hide">
+                    <p>Final Score</p>
+                </div>
+                <div id="total-score"></div>
+                <div class="initials hide">
+                    <form id="initials-form" method="POST">
+                        <label for="initials-text"></label>
+                        <input type="text" placeholder="Your Initials" name="initals-text" id="initials-text" />
+                    </form>
+                    <p>Highscores: <span id="high-scores"></span></p>
+                    <ul id="highscores-list"></ul>
+                </div>
             </div>
         </div>
     </main>

@@ -8,10 +8,15 @@ const question = document.querySelector("#question");
 const choiceA = document.getElementById("A");
 const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
-const totalScore = document.querySelector(".score-container");
-const intialsBox = document.querySelector("#initialsForm");
+const totalScore = document.getElementById("total-score");
+const scoreContainer = document.querySelector(".score-container");
+const initialsBox = document.querySelector(".initials");
+const initialsTextInput = document.querySelector("#initials-text");
+const initialsForm = document.querySelector("#initials-form");
+const initials = [];
+const initialsList = document.querySelector("#highscores-list");
 
-//object of questions and answers
+//Object array of questions and answers
 const myQuestions = [
     {
         question: "How many computer programming languages are there?",
@@ -81,7 +86,7 @@ function renderTimer() {
     }
 }
 
-//Check answer
+//Check if user answer matches correct answer
 function checkAnswer(answer) {
     if (answer == myQuestions[runningQuestion].correctAnswer) {
         score++
@@ -102,14 +107,56 @@ function answerIsCorrect() {
     console.log("youre right");
 }
 
+//Deduct 5 seconds from time
 function answerIsWrong() {
-    console.log("youre wrong");
+    count -= 5;
 }
 
 //Final score percentage
 function finalScore(){
     questionContainer.classList.add('hide');
-    totalScore.classList.remove('hide');
+    scoreContainer.classList.remove('hide');
+    initialsBox.classList.remove('hide');
     const scorePercent = Math.round(100 * score/myQuestions.length);
     totalScore.innerHTML += "<p>"+ scorePercent +"</p>";
+
 }
+
+
+//Store scores function
+function storeScores() {
+    localStorage.setItem("initials", JSON.stringify(initials));
+  }
+  
+  initialsForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+  
+    var initialsText = initialsTextInput.value.trim();
+  
+    // Return from function early if submitted initials text is blank
+    if (initialsText === "") {
+      return;
+    }
+  
+    // Add new initials text and clear input
+    initials.push(initialsText);
+    initialsTextInput.value = "";
+  
+    renderInitials();
+    storeScores();
+  });
+
+  function renderInitials() {
+    initialsList.innerHTML = "";
+    for (var i = 0; i < initials.length; i++) {
+        var initial = initials[i];
+
+        var li = document.createElement("li");
+        li.textContent = initial;
+        li.setAttribute("data-index", i);
+
+        initialsList.appendChild(li);
+    }
+  }
+
+ 

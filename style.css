@@ -56,3 +56,21 @@
 #question {
     font-size: 30px;
 }
+/*score container style*/
+.score-container, 
+#total-score {
+    font-size: 30px;
+}
+
+.initials {
+    font-family: 'VT323', monospace;
+    font-size: 30px;  
+}
+
+#initials-text {
+    text-align: center;
+}
+
+#highscores-list {
+    list-style-type: none;
+}
