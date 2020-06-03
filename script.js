@@ -142,9 +142,7 @@ initialsForm.addEventListener("submit", function(event) {
     initialsTextInput.value = "";
 });
 
-// function storeScores() {
-//     localStorage.setItem("mostRecentScore", JSON.stringify(mostRecentScore));
-// }
+
 
 
 
