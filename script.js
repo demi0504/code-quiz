@@ -9,7 +9,6 @@ const choiceA = document.getElementById("A");
 const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
 const totalScore = document.getElementById("total-score");
-const highScoreBtn = document.getElementById("highscores");
 const scoreContainer = document.querySelector(".score-container");
 const initialsBox = document.querySelector(".initials");
 const initialsTextInput = document.querySelector("#initials-text");
@@ -143,9 +142,9 @@ initialsForm.addEventListener("submit", function(event) {
     initialsTextInput.value = "";
 });
 
-function storeScores() {
-    localStorage.setItem("mostRecentScore", JSON.stringify(mostRecentScore));
-}
+// function storeScores() {
+//     localStorage.setItem("mostRecentScore", JSON.stringify(mostRecentScore));
+// }
 
 
 
