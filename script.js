@@ -9,6 +9,7 @@ const choiceA = document.getElementById("A");
 const choiceB = document.getElementById("B");
 const choiceC = document.getElementById("C");
 const totalScore = document.getElementById("total-score");
+const highScoreBtn = document.getElementById("highscores");
 const scoreContainer = document.querySelector(".score-container");
 const initialsBox = document.querySelector(".initials");
 const initialsTextInput = document.querySelector("#initials-text");
@@ -56,6 +57,7 @@ function showQuestion() {
     choiceB.innerHTML = q.choiceB;
     choiceC.innerHTML = q.choiceC;
 }
+
 
 //Function for start button to initiate quiz questions
 startButton.addEventListener('click', startQuiz);
@@ -119,44 +121,36 @@ function finalScore(){
     initialsBox.classList.remove('hide');
     const scorePercent = Math.round(100 * score/myQuestions.length);
     totalScore.innerHTML += "<p>"+ scorePercent +"</p>";
+}
+//Store Scores and User Initials from quiz
+initialsForm.addEventListener("submit", function(event) {
+    event.preventDefault();
 
+    //Object for initial and highscore submission
+    var mostRecentScore = {
+        initials: initialsTextInput.value.trim(),
+        highscore: totalScore.innerText
+    };
+
+    if (mostRecentScore.initials === "") {
+        return;
+    }
+
+    localStorage.setItem("mostRecentScore", JSON.stringify(mostRecentScore));
+
+    var lastScore = JSON.parse(localStorage.getItem("mostRecentScore"));
+    initialsList.textContent = lastScore.initials + lastScore.highscore;
+    initialsTextInput.value = "";
+});
+
+function storeScores() {
+    localStorage.setItem("mostRecentScore", JSON.stringify(mostRecentScore));
 }
 
 
-//Store scores function
-function storeScores() {
-    localStorage.setItem("initials", JSON.stringify(initials));
-  }
-  
-  initialsForm.addEventListener("submit", function(event) {
-    event.preventDefault();
-  
-    var initialsText = initialsTextInput.value.trim();
-  
-    // Return from function early if submitted initials text is blank
-    if (initialsText === "") {
-      return;
-    }
-  
-    // Add new initials text and clear input
-    initials.push(initialsText);
-    initialsTextInput.value = "";
-  
-    renderInitials();
-    storeScores();
-  });
 
-  function renderInitials() {
-    initialsList.innerHTML = "";
-    for (var i = 0; i < initials.length; i++) {
-        var initial = initials[i];
 
-        var li = document.createElement("li");
-        li.textContent = initial;
-        li.setAttribute("data-index", i);
 
-        initialsList.appendChild(li);
-    }
-  }
+
 
  
