@@ -124,25 +124,72 @@ function finalScore(){
 //Store Scores and User Initials from quiz
 initialsForm.addEventListener("submit", function(event) {
     event.preventDefault();
+    storeScores();
+});
 
-    //Object for initial and highscore submission
-    var mostRecentScore = {
-        initials: initialsTextInput.value.trim(),
-        highscore: totalScore.innerText
-    };
+function storeScores() {
+    // get recentScores if there are any 
+    var recentScores = localStorage.getItem("recentScores");
+    debugger
 
-    if (mostRecentScore.initials === "") {
-        return;
+    // get new initials
+    var newInitials = initialsTextInput.value.trim(); 
+    debugger
+    // get new score
+    var newScore = totalScore.innerText
+    debugger
+
+    // set variable to hold score object
+    let newScoresObj;
+
+    if (recentScores) {
+        // parse scores array from local storage
+        newScoresObj = JSON.parse(recentScores);
+            newScoresObj[newInitials] =
+                (newScoresObj.hasOwnProperty(newInitials) && newScoresObj[newInitials] > newScore) ?
+                newScoresObj[newInitials] :
+                newScore; 
+        
+    } else {
+        // setup initial scores array
+        newScoresObj = {
+            [newInitials]: newScore
+        };
+    }
+ 
+    // set localStorage "recentScores" to updated array of scores
+    localStorage.setItem("recentScores", JSON.stringify(newScoresObj));
+
+    // set variable to store the score content
+    let scoreContent = '';
+
+    for(i = 0; i < Object.keys(newScoresObj).length; i ++) {
+        const currentInitials = Object.keys(newScoresObj)[i];
+
+        const currentScore = newScoresObj[currentInitials];
+        debugger
+        // set up a string for the HTML and text of the new score
+        scoreContent += '<li>' + currentInitials + ": " + currentScore + '</li>';
+        initialsList.innerHTML = scoreContent;
     }
 
-    localStorage.setItem("mostRecentScore", JSON.stringify(mostRecentScore));
+    // ES6 solution in place of for loop
+    // Object.keys(newScoresObj).map((key, index) => {
+    //     const currentInitials = key;
+    //     const currentScore = newScoresObj[key];
 
-    var lastScore = JSON.parse(localStorage.getItem("mostRecentScore"));
-    initialsList.textContent = lastScore.initials + lastScore.highscore;
+    //     scoreContent += `<li>${currentInitials} : ${currentScore}</li>`;
+    //     initialsList.innerHTML = scoreContent;
+    // });
+    
     initialsTextInput.value = "";
+<<<<<<< HEAD
 });
 
 
+=======
+}
+>>>>>>> 11fbd0a79d948537e2fa10856a0f2004d8ed14b5
 
 
 
